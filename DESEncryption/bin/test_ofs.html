@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="des.js"></script>
+<script src="Hmac-SHA256.js"></script>
+<script>
+	function enc(){
+		var randomnumber= "79341585";//Math.floor(10000000 + (Math.random() * (100000000 - 10000000 + 1)));
+
+		var l_str_pas	= stringToHex(des (document.frmLogin.fldPassword.value.substring(0,8), document.frmLogin.fldPassword.value, 1, 0));
+		var l_sub_password = l_str_pas.toUpperCase().substring(2,l_str_pas.length);
+		while(l_sub_password.length < 32){
+			l_sub_password = l_sub_password + "0";
+		}
+		//alert(l_sub_password);
+		
+		//document.frmLogin.fldRandomNumber.value	= randomnumber;
+		//document.write("Key : "+document.frmLogin.fldPassword.value.substring(0,8)+"<br>Message : "+document.frmLogin.fldPassword.value+"<br>DES : "+l_str_pas+"<br>Random Number : "+randomnumber+"<br>Hex HMac : "+hex_hmac (randomnumber,l_sub_password));
+	
+	alert("hi   "+hex_hmac (randomnumber,l_sub_password));
+	
+	}
+</script>
+</head>
+<body>
+
+<form name="frmLogin" class="login" method="post" target="_top" AUTOCOMPLETE="off">
+
+	<input type="type" name="fldPassword" value=""/>
+	<input type="Button" name="Submit" Value="Submit" onClick="enc()">
+</form>
+</body>
